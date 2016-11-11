@@ -13,22 +13,27 @@
 			.content {
 				width: 100%;
 			}
+			.top {
+				margin-top: 100px;
+
+			}
 			.text-display {
 				text-align: center;
 				font-size: 32px;
-				margin-top: 100px;
+			}
+			#animal-name {
+				padding-bottom: 100px;
 			}
 			#swipe-me {
 				padding: 100px;
 				background: white;
-
 			}
 		</style>
 
 	</head>
-	<body onClick="displayAnimal()">
+	<body>
 		<div class="content">
-			<div class="text-display">
+			<div class="text-display top" onClick="displayAnimal()">
 				<p>Here's an animal:</p>
 				<p id="animal-name"></p>
 			</div>
@@ -187,7 +192,6 @@
 			}
 
 			displayAnimal();
-
 
 			$("#swipe-me").swipe( {
 				//Generic swipe handler for all directions
