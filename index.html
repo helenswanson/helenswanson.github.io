@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<title>Words</title>
+
+		<style type="text/css">
+			body {
+				background: #B7E1CE;]
+				height: 100%
+				width: 100%;
+			}
+			.content {
+				width: 100%;
+			}
+			.text-display {
+				text-align: center;
+				font-size: 32px;
+				margin: 100px;
+			}
+			.text-display-2 {
+				text-align: center;
+				font-size: 32px;
+				margin: 100px;
+				background: white;
+			}
+		</style>
+
+	</head>
+	<body onclick="displayAnimal()">
+		<div class="content">
+			<div class="text-display">
+				<p>Here's an animal:</p>
+				<p id="animal-name"></p>
+			</div>
+			<div class="text-display-2">
+				<div id="test" class="box">Swipe me</div>
+			</div>
+
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+
+		<script type="text/javascript">
+
+			var animalArray = [
+				"aardvark",
+				"alligator",
+				"alpaca",
+				"antelope",
+				"ape",
+				"armadillo",
+				"baboon",
+				"badger",
+				"bat",
+				"bear",
+				"beaver",
+				"bison",
+				"boar",
+				"buffalo",
+				"bull",
+				"camel",
+				"canary",
+				"capybara",
+				"cat",
+				"chameleon",
+				"cheetah",
+				"chimpanzee",
+				"chinchilla",
+				"chipmunk",
+				"cougar",
+				"cow",
+				"coyote",
+				"crocodile",
+				"crow",
+				"deer",
+				"dingo",
+				"dog",
+				"donkey",
+				"dromedary",
+				"elephant",
+				"elk",
+				"ewe",
+				"ferret",
+				"finch",
+				"fish",
+				"fox",
+				"frog",
+				"gazelle",
+				"gila monster",
+				"giraffe",
+				"gnu",
+				"goat",
+				"gopher",
+				"gorilla",
+				"grizzly bear",
+				"ground hog",
+				"guinea pig",
+				"hamster",
+				"hedgehog",
+				"hippopotamus",
+				"hog",
+				"horse",
+				"hyena",
+				"ibex",
+				"iguana",
+				"impala",
+				"jackal",
+				"jaguar",
+				"kangaroo",
+				"koala",
+				"lamb",
+				"lemur",
+				"leopard",
+				"lion",
+				"lizard",
+				"llama",
+				"lynx",
+				"mandrill",
+				"marmoset",
+				"mink",
+				"mole",
+				"mongoose",
+				"monkey",
+				"moose",
+				"mountain goat",
+				"mouse",
+				"mule",
+				"muskrat",
+				"mustang",
+				"mynah bird",
+				"newt",
+				"ocelot",
+				"opossum",
+				"orangutan",
+				"oryx",
+				"otter",
+				"ox",
+				"panda",
+				"panther",
+				"parakeet",
+				"parrot",
+				"pig",
+				"platypus",
+				"polar bear",
+				"porcupine",
+				"porpoise",
+				"prairie dog",
+				"puma",
+				"rabbit",
+				"raccoon",
+				"ram",
+				"rat",
+				"reindeer",
+				"reptile",
+				"rhinoceros",
+				"salamander",
+				"seal",
+				"sheep",
+				"shrew",
+				"silver fox",
+				"skunk",
+				"sloth",
+				"snake",
+				"squirrel",
+				"tapir",
+				"tiger",
+				"toad",
+				"turtle",
+				"walrus",
+				"warthog",
+				"weasel",
+				"whale",
+				"wildcat",
+				"wolf",
+				"wolverine",
+				"wombat",
+				"woodchuck",
+				"yak",
+				"zebra"
+			];
+
+			function displayAnimal() {
+				var randomAnimal = animalArray[Math.floor(Math.random() * animalArray.length)];
+				document.getElementById('animal-name').innerHTML = randomAnimal;
+			}
+
+			displayAnimal();
+
+
+			$("#test").swipe( {
+				//Generic swipe handler for all directions
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					$(this).text("You swiped " + direction );  
+				},
+				//Default is 75px, set to 0 for demo so any distance triggers swipe
+				threshold:0
+			});
+
+		</script>
+	</body>
+
+</html>
+
+
+
