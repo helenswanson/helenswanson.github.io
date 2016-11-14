@@ -2,7 +2,7 @@
 <html lang="">
 	<head>
 		<meta charset="utf-8">
-		<title>Words</title>
+		<title>Animal Swipe</title>
 
 		<style type="text/css">
 			body {
@@ -11,47 +11,31 @@
 				height: 100%
 				width: 100%;
 			}
-			.content {
-				width: 100%;
-			}
-			.top {
-				margin-top: 60px;
-			}
-			.text-display {
-				font-size: 32px;
-			}
-			.box {
-				padding: 60px;
-			}
-
-			#animal-click {
-				padding-bottom: 20px;
-			}
-			#swipe-me {
-				background: #B7E1CE;
-			}
-			#animal-swipe {
-				background: #cab8e0;
-			}
+			.content { width: 100%; }
+			.top { padding-top: 60px; }
+			.text-display { font-size: 32px; }
+			.box { padding: 60px; }
+			#direction-swipe { background: #B7E1CE; }
+			#animal-swipe { background: #cab8e0; }
 		</style>
-
 	</head>
 	<body>
 		<div class="content">
-			<div class="text-display top" onClick="displayAnimalClick()">
+			<h1>Animal Swipe!</h1>
+			<div class="text-display box top" onClick="displayAnimalClick()">
 				<div id="animal-display">
-					<p>Here's an animal:</p>
-					<p id="animal-click"></p>
+					Click for a random animal:
+					<div id="animal-click"></div>
 				</div>
 			</div>
 			<div class="text-display">
-				<div id="swipe-me" class="box">Swipe me</div>
+				<div id="direction-swipe" class="box">Swipe for direction</div>
 			</div>
 			<div class="text-display">
-				<div id="animal-swipe" class="box">Swipe me</div>
+				<div id="animal-swipe" class="box">Swipe for animal</div>
 			</div>
 			<div class="text-display">
-				<div id="animal-swipe-final" class="box">Swipe me</div>
+				<div id="direction-animal-swipe" class="box">Swipe for direction + animal</div>
 			</div>
 		</div>
 
@@ -201,36 +185,31 @@
 				var randomAnimal = animalArray[Math.floor(Math.random() * animalArray.length)];
 				document.getElementById('animal-click').innerHTML = randomAnimal;
 			}
+			displayAnimalClick();
 
 			function displayAnimalSwipe() {
 				var randomAnimal = animalArray[Math.floor(Math.random() * animalArray.length)];
 				document.getElementById('animal-swipe').innerHTML = randomAnimal;
 			}
 
-			displayAnimalClick();
-
-			$("#swipe-me").swipe( {
+			$("#direction-swipe").swipe( {
 				//Generic swipe handler for all directions
 				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-					$(this).text("You swiped " + direction );  
+					$(this).text( "You swiped " + direction );  
 				},
 				//Default is 75px, set to 0 for demo so any distance triggers swipe
 				threshold:0
 			});
-
 			$("#animal-swipe").swipe({swipe:displayAnimalSwipe, threshold:0});
-
-			$("#animal-swipe-final").swipe( {
+			$("#direction-animal-swipe").swipe( {
 				//Generic swipe handler for all directions
 				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 					var randomAnimal = animalArray[Math.floor(Math.random() * animalArray.length)];
-					// document.getElementById('animal-name').innerHTML = randomAnimal;
-					$(this).html("You swiped " + direction + ".<br><br>Here's an animal:<br>" + randomAnimal);
+					$(this).html("You swiped " + direction + "<br><br>Here's an animal:<br>" + randomAnimal);
 				},
 				//Default is 75px, set to 0 for demo so any distance triggers swipe
 				threshold:0
 			});
-
 		</script>
 	</body>
 
