@@ -14,29 +14,33 @@
 				width: 100%;
 			}
 			.top {
-				margin-top: 100px;
+				margin-top: 70px;
 			}
 			.text-display {
 				text-align: center;
 				font-size: 32px;
 			}
 			#animal-click {
-				padding-bottom: 50px;
+				padding-bottom: 20px;
 			}
 			#swipe-me {
-				padding: 100px;
+				padding: 70px;
 				background: #B7E1CE;
 			}
 			#animal-swipe {
-				padding: 100px;
+				padding: 70px;
 				background: #cab8e0;
+			}
+			#animal-swipe {
+				padding: 70px;
+				background: #deb9bc;
 			}
 		</style>
 
 	</head>
 	<body>
 		<div class="content">
-			<div class="text-display top" onClick="displayAnimal()">
+			<div class="text-display top" onClick="displayAnimalClick()">
 				<div id="animal-display">
 					<p>Here's an animal:</p>
 					<p id="animal-click"></p>
@@ -46,7 +50,10 @@
 				<div id="swipe-me" class="box">Swipe me</div>
 			</div>
 			<div class="text-display">
-				<div id="animal-swipe" class="box">Swipe me</div>
+				<div id="animal-swipe" class="box">Swipe for me</div>
+			</div>
+			<div class="text-display">
+				<div id="animal-swipe-final" class="box">Swipe me</div>
 			</div>
 
 		</div>
@@ -60,7 +67,6 @@
 		</script>
 
 		<script type="text/javascript">
-
 			var animalArray = [
 				"aardvark",
 				"alligator",
@@ -198,12 +204,17 @@
 				"zebra"
 			];
 
-			function displayAnimal() {
+			function displayAnimalClick() {
 				var randomAnimal = animalArray[Math.floor(Math.random() * animalArray.length)];
 				document.getElementById('animal-click').innerHTML = randomAnimal;
 			}
 
-			displayAnimal();
+			function displayAnimalSwipe() {
+				var randomAnimal = animalArray[Math.floor(Math.random() * animalArray.length)];
+				document.getElementById('animal-swipe').innerHTML = randomAnimal;
+			}
+
+			displayAnimalClick();
 
 			$("#swipe-me").swipe( {
 				//Generic swipe handler for all directions
@@ -213,6 +224,8 @@
 				//Default is 75px, set to 0 for demo so any distance triggers swipe
 				threshold:0
 			});
+
+			$("#animal-swipe").swipe({swipe:displayAnimalSwipe, threshold:0});
 
 		</script>
 	</body>
