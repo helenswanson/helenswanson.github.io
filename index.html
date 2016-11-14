@@ -7,6 +7,7 @@
 		<style type="text/css">
 			body {
 				background: #F1F3F8;
+				text-align: center;
 				height: 100%
 				width: 100%;
 			}
@@ -14,26 +15,23 @@
 				width: 100%;
 			}
 			.top {
-				margin-top: 70px;
+				margin-top: 60px;
 			}
 			.text-display {
-				text-align: center;
 				font-size: 32px;
 			}
+			.box {
+				padding: 60px;
+			}
+
 			#animal-click {
 				padding-bottom: 20px;
 			}
 			#swipe-me {
-				padding: 70px;
 				background: #B7E1CE;
 			}
 			#animal-swipe {
-				padding: 70px;
 				background: #cab8e0;
-			}
-			#animal-swipe-final {
-				padding: 70px;
-				background: #ded4ba;
 			}
 		</style>
 
@@ -55,7 +53,6 @@
 			<div class="text-display">
 				<div id="animal-swipe-final" class="box">Swipe me</div>
 			</div>
-
 		</div>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -226,6 +223,17 @@
 			});
 
 			$("#animal-swipe").swipe({swipe:displayAnimalSwipe, threshold:0});
+
+			$("#animal-swipe-final").swipe( {
+				//Generic swipe handler for all directions
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					var randomAnimal = animalArray[Math.floor(Math.random() * animalArray.length)];
+					// document.getElementById('animal-name').innerHTML = randomAnimal;
+					$(this).html("You swiped " + direction + ".<br><br>Here's an animal:<br>" + randomAnimal);
+				},
+				//Default is 75px, set to 0 for demo so any distance triggers swipe
+				threshold:0
+			});
 
 		</script>
 	</body>
